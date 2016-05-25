@@ -2,7 +2,7 @@
 title: "Final Exam on Scorpion Behavior"
 author: "Put your name here!"
 date: "put the date here"
-output: word_document
+output: html_document
 ---
 
 ```{r include=FALSE,echo=FALSE}
@@ -46,17 +46,47 @@ a chi-squared test would be chosen.>
 <Divide this section into two sub-sections:  One for your descriptive  results and one for your inferential results.>
 
 ## Descriptive Results
-
+In order to understand the comparison between the scorpions when odor is a factor to explain when they would attack or become more aggrevated. We must create a plot in order to compare the reaction time for the scorpions when they feel threatened by a predator and when they do not feel threatened by a predator. We must also produce a t.test in order to show the comparison between the control group as well as the experimental group so that we may see if they have a significant comparison.
 ### Graphical Descriptive Results
 
+```{r}
+url2="scorpion_reaction_rolls.csv"
+scorp_data2=read.csv(url2,header=T)
+contTable <- xtabs(~ Behavior + roll, data = scorp_data2)
+barchart(contTable,
+	auto.key = list(
+		space = "top",
+		title = "roll",
+		cex.title = 1,
+		columns = 1),
+	horizontal = FALSE,
+	main = "Behavior",
+	xlab = "Roll",
+	ylab = "Frequency")
+```
+
+
+The bar graph clearly shows that the scorpions are much more likely to have a wet sting when a threat is present, than in the control group when the threat is not present.
+
+This plot shows that when we factor the reaction time for both the control and experimental group the comparison has a positive correlation which would indicate that the reaction time for the experiemental group has a direct correlation to the reaction time for the control group.
 <Graphical results here.  Make sure to show your code.  Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too.  Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question>
 
 ### Numerical Descriptive Results
 
+```{r}
+attach(scorp_data2)
+rol=table(roll,Behavior)
+rowPerc(rol)
+```
+
+During the rowPerc test it clearly shows that the scorpions are more likely to have a wet sting when a threat is present as opposed to when there is no threat present. About 70% of the scorpions will have a wet sting when the threat is present; while those who did not have a threat present only about 7% had a wet sting.
 <Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question>
 
 ## Inferential Results
-
+```{r}
+chisqtestGC(rol,simulate.p.value = TRUE ,graph=TRUE)
+```
+The chisqtest shows that we would reject the null hypothesis based on the fact that the wet sting was used more frequently with the threat prescence in comparison to when there is no threat present. The pvalue is significantly low which indicates that there is a difference between the two variables compared.
 <State hypothesis clearly.  Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc.  Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question>
 
 # Methods for different sizes (large vs small)
