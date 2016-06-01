@@ -15,7 +15,8 @@ require(tigerstats)
 
 # Introduction
 
-<In this section you explain what you are trying to show.  Where did the data come from?  What is the research or other question you are trying to answer?>
+Mustafa Mustafa Mustafa
+This is a project. A final project. That we're doing so we won't fail. Please give us A's so that we can sleep without worrying about our parents yelling at us for not getting an A. Best introduction ever. Viva las estadisticas.
 
 #### what was asked for
 Investigate whether the odors from a predator might influence the defensive behavior of Hadrurus arizonensis, and if the scorpion size plays a role in the type of response.
